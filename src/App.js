@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Title from './components/Title.js';
 import StartButton from './components/StartButton.js';
+import Hiragana from './syllabary/Hiragana.js';
 
 export default class App extends Component {
   render() {
