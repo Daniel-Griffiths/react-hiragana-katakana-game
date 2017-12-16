@@ -11,7 +11,7 @@ export default class StartButton extends Component {
 			style={
 				{
 					display: 'block',
-					width: '100%',
+					margin: 'auto',
 				}
 			}>Start Game</Button>
 		)
