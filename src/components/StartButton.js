@@ -6,7 +6,7 @@ export default class StartButton extends Component {
 		return (
 			<Button 
 			onClick={
-				()=>alert('hi')
+				this.start()
 			}
 			style={
 				{
@@ -15,5 +15,9 @@ export default class StartButton extends Component {
 				}
 			}>Start Game</Button>
 		)
+	}
+
+	start() {
+		return () => alert('test');
 	}
 }
