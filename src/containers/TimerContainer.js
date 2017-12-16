@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Timer from './../components/Timer.js'
 
 export default class TimerContainer extends Component {
 	constructor(props) {
@@ -28,6 +29,6 @@ export default class TimerContainer extends Component {
 	}
 
 	render() {
-		return <div>{this.state.time}</div>
+		return <Timer>{this.state.time}</Timer>
 	}
 }
