@@ -6,7 +6,7 @@ export default class StartButton extends Component {
 		return (
 			<Button 
 			onClick={
-				this.start()
+				() => this.props.handler()
 			}
 			style={
 				{
