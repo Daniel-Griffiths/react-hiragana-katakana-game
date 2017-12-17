@@ -17,12 +17,13 @@ export default class App extends Component {
     }
   }
 
-  randomCharacter(obj) {
+  randomCharacter(characters) {
     let result;
     let count = 0;
-    for (let prop in obj)
+    characters.map(character => {
         if (Math.random() < 1/++count)
-           result = prop;
+           result = character;
+    })
     return result;
   }
 
