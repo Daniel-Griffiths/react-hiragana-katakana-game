@@ -4,6 +4,6 @@ A simple game built in React to help learn [Hiragana](https://en.wikipedia.org/w
 
 Play it here: https://hiragana-game.netlify.com/
 
-![Game Image](http://res.cloudinary.com/daniel-griffiths/image/upload/v1513551205/Capture_qmghd4.png)
+![Game Image](http://res.cloudinary.com/daniel-griffiths/image/upload/v1513551592/Capture_kgohcf.png)
 
 
