@@ -13,18 +13,30 @@ export default class App extends Component {
     this.state = {
       gameStart: false,
       characters: Hiragana,
-      currentCharacter: null,
+      currentCharacter: '',
     }
   }
 
   randomCharacter(characters) {
     let result;
     let count = 0;
-    characters.map(character => {
+    Object.keys(characters).map(character => {
         if (Math.random() < 1/++count)
            result = character;
     })
     return result;
+  }
+
+  checkAnswer = (answer) => {
+    console.log(this.state.characters);
+    if(answer == this.state.characters[this.state.currentCharacter]){
+      alert('You got it right!')
+    } else {
+      alert(`Woops! ${this.state.currentCharacter} is "${this.state.characters[this.state.currentCharacter]}"`)
+    }
+    this.setState({
+        currentCharacter: this.randomCharacter(this.state.characters),
+    })
   }
 
   start = () => {
@@ -47,7 +59,7 @@ export default class App extends Component {
             <div>
               <Title>Guess The Character</Title> 
               <Character>{this.state.currentCharacter}</Character>
-              <Answer/>
+              <Answer handler={this.checkAnswer}/>
             </div>          
         }
       </div>

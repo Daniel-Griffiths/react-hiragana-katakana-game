@@ -1,4 +1,4 @@
-const Hiragana = [
+const Hiragana = {
   'あ': 'a',
   'い': 'i',
   'う': 'u',
@@ -72,6 +72,6 @@ const Hiragana = [
   'ゐ': 'wi',
   'ゑ': 'we',
   'を': 'wo',  
-]
+}
 
 export default Hiragana
