@@ -8,7 +8,7 @@ export default styled.button`
   background: transparent;
   cursor: pointer;
   transition: 0.3s ease;
-  fontSize: 0.6em;
+  font-size: .7em;
   margin-bottom: 1em;
   &:hover{
   	background: #fff;
