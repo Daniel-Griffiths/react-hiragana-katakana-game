@@ -1,6 +1,9 @@
-## Learn Hiragana/Katakana
+## React Hiragana Game
 
-View current build here: https://hirigana-katakana-game.netlify.com/
+A simple game built in React to help learn [Hiragana](https://en.wikipedia.org/wiki/Hiragana). 
 
-...readme coming soon
+Play it here: https://hiragana-game.netlify.com/
+
+![Game Image](http://res.cloudinary.com/daniel-griffiths/image/upload/v1513551205/Capture_qmghd4.png)
+
 
