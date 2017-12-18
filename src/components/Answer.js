@@ -36,7 +36,7 @@ export default class Answer extends Component {
 				style={
 					{
 					    flexGrow: '1',
-						fontSize: '.6em',
+						fontSize: '.7em',
 						cursor: 'pointer',
 					    marginRight: '1em',
 						padding: '1em 3em',
