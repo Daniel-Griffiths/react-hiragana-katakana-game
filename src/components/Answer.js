@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Button from './Button'
 
 export default class Answer extends Component {
 	constructor(props){
@@ -16,35 +17,39 @@ export default class Answer extends Component {
 	}
 
 	checkAnswer(e) {
-		if(e.key === 'Enter'){
-			this.props.handler(this.state.answer)
-			this.setState({
-				answer: ''
-			})
-		}
+		this.props.handler(this.state.answer)
+		this.setState({
+			answer: ''
+		})
 	}
 
 	render() {
 		return (
-			<input 
-			value={ this.state.answer }
-			onKeyUp={ this.checkAnswer }
-			onChange={ this.handleChange.bind(this) }
-			style={
+			<div style={
 				{
-					width: '100%',
-					display: 'block',
-					fontSize: '.6em',
-					cursor: 'pointer',
-					padding: '1em 3em',
-					marginBottom: '1em',
-					borderRadius: '3px',
-					transition: '.3s ease',
-					border: '3px solid #fff',
+					display: 'flex'
 				}
-			}
-			placeholder="Type the answer and press 'enter'"
-			required/>
+			}>
+				<input 
+				value={ this.state.answer }
+				onChange={ this.handleChange.bind(this) }
+				style={
+					{
+					    flexGrow: '1',
+						fontSize: '.6em',
+						cursor: 'pointer',
+					    marginRight: '1em',
+						padding: '1em 3em',
+						marginBottom: '1em',
+						borderRadius: '3px',
+						transition: '.3s ease',
+						border: '3px solid #fff',
+					}
+				}
+				placeholder="Type the answer here"
+				/>
+				<Button onClick={ this.checkAnswer }>Submit</Button>
+			</div>
 		)
 	}
 }
