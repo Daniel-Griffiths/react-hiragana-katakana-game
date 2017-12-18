@@ -39,7 +39,7 @@ export default class Answer extends Component {
 						fontSize: '.7em',
 						cursor: 'pointer',
 					    marginRight: '1em',
-						padding: '1em 3em',
+						padding: '1em',
 						marginBottom: '1em',
 						borderRadius: '3px',
 						transition: '.3s ease',
