@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import Title from './components/Title.js'
+import Timer from './components/Timer.js'
 import Alert from './components/Alert.js'
 import Button from './components/Button.js'
 import Answer from './components/Answer.js'
 import Hiragana from './syllabary/Hiragana.js'
 import Character from './components/Character.js'
 import StartButton from './components/StartButton.js'
-import TimerContainer from './containers/TimerContainer.js'
 
 export default class App extends Component {
   constructor(props) {
@@ -47,6 +47,12 @@ export default class App extends Component {
     })
   }
 
+  end = () => {
+    this.setState({
+        gameStart: false,
+    })
+  }
+
   render() {
     return (
       <div>
@@ -58,7 +64,7 @@ export default class App extends Component {
             </div>
           : 
             <div>
-              <Alert active="false">Test</Alert>
+              <Timer handler={this.end}/>
               <Title>Guess The Character</Title> 
               <Character>{this.state.currentCharacter}</Character>
               <Answer handler={this.checkAnswer}/>
