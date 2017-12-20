@@ -64,7 +64,7 @@ export default class App extends Component {
             </div>
           : 
             <div>
-              <Timer handler={this.end}/>
+              { /*<Timer handler={this.end}/>*/ }
               <Title>Guess The Character</Title> 
               <Character>{this.state.currentCharacter}</Character>
               <Answer handler={this.checkAnswer}/>
