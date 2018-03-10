@@ -17,6 +17,7 @@ export default class Answer extends Component {
 	}
 
 	checkAnswer(e) {
+		e.preventDefault()
 		this.props.handler(this.state.answer)
 		this.setState({
 			answer: ''
@@ -25,31 +26,27 @@ export default class Answer extends Component {
 
 	render() {
 		return (
-			<div style={
-				{
-					display: 'flex'
-				}
-			}>
+			<form style={{ display: 'flex' }} onSubmit={ this.checkAnswer }>
 				<input 
-				value={ this.state.answer }
-				onChange={ this.handleChange.bind(this) }
-				style={
-					{
-					    flexGrow: '1',
-						fontSize: '.7em',
-						cursor: 'pointer',
-					    marginRight: '1em',
-						padding: '1em',
-						marginBottom: '1em',
-						borderRadius: '3px',
-						transition: '.3s ease',
-						border: '3px solid #fff',
+					value={ this.state.answer }
+					placeholder="Type the answer here"
+					onChange={ this.handleChange.bind(this) }
+					style={
+						{
+						    flexGrow: '1',
+							fontSize: '.7em',
+							cursor: 'pointer',
+						    marginRight: '1em',
+							padding: '1em',
+							marginBottom: '1em',
+							borderRadius: '3px',
+							transition: '.3s ease',
+							border: '3px solid #fff',
+						}
 					}
-				}
-				placeholder="Type the answer here"
 				/>
-				<Button onClick={ this.checkAnswer }>Submit</Button>
-			</div>
+				<Button type="submit">Submit</Button>
+			</form>
 		)
 	}
 }

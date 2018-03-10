@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Fragment, Component } from 'react'
 import Title from './components/Title.js'
 import Timer from './components/Timer.js'
 import Alert from './components/Alert.js'
+import SweetAlert from 'sweetalert-react'
 import Button from './components/Button.js'
 import Answer from './components/Answer.js'
 import Hiragana from './syllabary/Hiragana.js'
@@ -9,13 +10,15 @@ import Character from './components/Character.js'
 import StartButton from './components/StartButton.js'
 
 export default class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      gameStart: false,
-      characters: Hiragana,
-      currentCharacter: '',
-    }
+
+  state = {
+    alertText: '',
+    alertTitle: '',
+    alertActive: false,
+    alertType: 'success',
+    gameStart: false,
+    characters: Hiragana,
+    currentCharacter: '',
   }
 
   randomCharacter(characters) {
@@ -29,15 +32,19 @@ export default class App extends Component {
   }
 
   checkAnswer = (answer) => {
-    console.log(this.state.characters);
     if(answer == this.state.characters[this.state.currentCharacter]){
-      alert('You got it right!')
+      this.setState({
+          currentCharacter: this.randomCharacter(this.state.characters),
+      })      
     } else {
-      alert(`Woops! ${this.state.currentCharacter} is "${this.state.characters[this.state.currentCharacter]}"`)
+      this.setState({
+          alertType: 'error',
+          alertTitle: 'Woops',
+          alertText: `${this.state.currentCharacter} is "${this.state.characters[this.state.currentCharacter]}"`,
+          alertActive: true,
+          currentCharacter: this.randomCharacter(this.state.characters),
+      })        
     }
-    this.setState({
-        currentCharacter: this.randomCharacter(this.state.characters),
-    })
   }
 
   start = () => {
@@ -58,17 +65,24 @@ export default class App extends Component {
       <div>
         { !this.state.gameStart 
           ? 
-            <div>
+            <Fragment>
               <Title>Learn Hiragana</Title> 
               <StartButton handler={this.start}/>
-            </div>
+            </Fragment>
           : 
-            <div>
-              { /*<Timer handler={this.end}/>*/ }
+            <Fragment>
+              <SweetAlert
+                type={this.state.alertType}
+                text={this.state.alertText}
+                title={this.state.alertTitle}
+                show={this.state.alertActive}
+                onConfirm={() => this.setState({ alertActive: false })}
+              />
+              { /*<Timer handler={this.end}/> */ }
               <Title>Guess The Character</Title> 
               <Character>{this.state.currentCharacter}</Character>
               <Answer handler={this.checkAnswer}/>
-            </div>          
+            </Fragment>          
         }
       </div>
     );

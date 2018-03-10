@@ -5,7 +5,8 @@
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "styled-components": "^2.3.0"
+    "styled-components": "^2.3.0",
+    "sweetalert-react": "^0.4.11"
   },
   "devDependencies": {
     "react-scripts": "1.0.17"
