@@ -11,7 +11,6 @@ import Character from './components/Character.js'
 import StartButton from './components/StartButton.js'
 
 export default class App extends Component {
-
   state = {
     alertText: '',
     alertTitle: '',
@@ -19,73 +18,73 @@ export default class App extends Component {
     alertType: 'success',
     gameStart: false,
     characters: Object.assign(Hiragana, Katakana),
-    currentCharacter: '',
+    currentCharacter: ''
   }
 
   randomCharacter(characters) {
-    let result;
-    let count = 0;
+    let result
+    let count = 0
     Object.keys(characters).map(character => {
-        if (Math.random() < 1/++count)
-           result = character;
+      if (Math.random() < 1 / ++count) result = character
     })
-    return result;
+    return result
   }
 
-  checkAnswer = (answer) => {
-    if(answer == this.state.characters[this.state.currentCharacter]){
+  checkAnswer = answer => {
+    if (answer == this.state.characters[this.state.currentCharacter]) {
       this.setState({
-          currentCharacter: this.randomCharacter(this.state.characters),
-      })      
+        currentCharacter: this.randomCharacter(this.state.characters)
+      })
     } else {
       this.setState({
-          alertType: 'error',
-          alertTitle: 'Woops',
-          alertText: `${this.state.currentCharacter} is "${this.state.characters[this.state.currentCharacter]}"`,
-          alertActive: true,
-          currentCharacter: this.randomCharacter(this.state.characters),
-      })        
+        alertType: 'error',
+        alertTitle: 'Woops',
+        alertText: `${this.state.currentCharacter} is "${
+          this.state.characters[this.state.currentCharacter]
+        }"`,
+        alertActive: true,
+        currentCharacter: this.randomCharacter(this.state.characters)
+      })
     }
   }
 
   start = () => {
     this.setState({
-        gameStart: true,
-        currentCharacter: this.randomCharacter(this.state.characters),
+      gameStart: true,
+      currentCharacter: this.randomCharacter(this.state.characters)
     })
   }
 
   end = () => {
     this.setState({
-        gameStart: false,
+      gameStart: false
     })
   }
 
   render() {
     return (
       <div>
-        { !this.state.gameStart 
-          ? 
-            <Fragment>
-              <Title>Learn Hiragana/Katakana</Title> 
-              <StartButton handler={this.start}/>
-            </Fragment>
-          : 
-            <Fragment>
-              <SweetAlert
-                type={this.state.alertType}
-                text={this.state.alertText}
-                title={this.state.alertTitle}
-                show={this.state.alertActive}
-                onConfirm={() => this.setState({ alertActive: false })}
-              />
-              { /*<Timer handler={this.end}/> */ }
-              <Title>Guess The Character</Title> 
-              <Character>{this.state.currentCharacter}</Character>
-              <Answer handler={this.checkAnswer}/>
-            </Fragment>          
-        }
+        {!this.state.gameStart ? (
+          <Fragment>
+            <Title>Learn Hiragana/Katakana</Title>
+            <StartButton handler={this.start} />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <SweetAlert
+              type={this.state.alertType}
+              text={this.state.alertText}
+              title={this.state.alertTitle}
+              show={this.state.alertActive}
+              onConfirm={() => this.setState({ alertActive: false })}
+            />
+            {/*<Timer handler={this.end}/> */}
+            <Title>Guess The Character</Title>
+            <Character>{this.state.currentCharacter}</Character>
+            <Answer handler={this.checkAnswer} />
+          </Fragment>
+        )}
       </div>
-    );
+    )
   }
 }
