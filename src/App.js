@@ -6,6 +6,7 @@ import SweetAlert from 'sweetalert-react'
 import Button from './components/Button.js'
 import Answer from './components/Answer.js'
 import Hiragana from './syllabary/Hiragana.js'
+import Katakana from './syllabary/Katakana.js'
 import Character from './components/Character.js'
 import StartButton from './components/StartButton.js'
 
@@ -17,7 +18,7 @@ export default class App extends Component {
     alertActive: false,
     alertType: 'success',
     gameStart: false,
-    characters: Hiragana,
+    characters: Object.assign(Hiragana, Katakana),
     currentCharacter: '',
   }
 
@@ -66,7 +67,7 @@ export default class App extends Component {
         { !this.state.gameStart 
           ? 
             <Fragment>
-              <Title>Learn Hiragana</Title> 
+              <Title>Learn Hiragana/Katakana</Title> 
               <StartButton handler={this.start}/>
             </Fragment>
           : 
