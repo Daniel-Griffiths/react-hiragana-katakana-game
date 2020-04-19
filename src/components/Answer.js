@@ -12,7 +12,7 @@ export default class Answer extends Component {
 
   handleChange(e) {
     this.setState({
-      answer: e.target.value
+      answer: e.target.value.toLowerCase()
     })
   }
 
